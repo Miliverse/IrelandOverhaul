@@ -10,6 +10,7 @@ C:\Users\[Your User Account Here]\Documents\Paradox Interactive\
 Go inside the Hearts of Iron IV folder, and there should be a folder called "mod".
 
 Drop the irelandoverhaul folder inside there, along with irelandoverhaul.mod.
+
 (just to be clear, this is the irelandoverhaul folder all lower case. it's inside the IrelandOverhaul folder when you download and 
 unzip the mod)
 
