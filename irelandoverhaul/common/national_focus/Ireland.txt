@@ -1,0 +1,278 @@
+focus_tree = {
+	id = ireland_focus
+
+	country = {
+		factor = 0
+		
+		modifier = {
+			add = 10
+			tag = IRE
+		}
+	}
+
+# irish constiutional plebiscite
+	focus = {
+		id = IRE_constitution_plebiscite
+		icon = GFX_goal_generic_forceful_treaty
+		#text = extra_tech_slot
+		available = { has_country_flag = lore_read }
+		#prerequisite = { has_country_flag = lore read  }
+		x = 14
+		y = 0
+		#relative_position_id = ITA_industrial_effort_2
+		cost = 5
+		#ai_will_do = {
+		#	factor = 1
+		#}
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_political_power = 100
+		}
+
+		completion_reward = {
+				country_event = { id = ireland.4 }
+		}
+	}
+#
+	focus = {
+		id = IRE_loyal_to_the_republic
+		icon = GFX_focus_generic_the_giant_wakes
+		#text = extra_tech_slot
+		available = { always = no }
+		prerequisite = { focus = IRE_constitution_plebiscite }
+		x = -3
+		y = 1
+		relative_position_id = IRE_constitution_plebiscite
+		bypass = { has_country_flag = plebiscite_passed }
+		cost = 0
+		#ai_will_do = {
+		#	factor = 1
+		#}
+
+		#will_lead_to_war_with = <ENG>
+		available_if_capitulated = yes
+
+		completion_reward = {
+			country_event = { id = ireland.2}
+		}
+	}
+#
+	focus = {
+		id = IRE_stay_loyal_to_democracy
+		icon = GFX_goal_support_democracy
+		#text = extra_tech_slot
+		prerequisite = { focus = IRE_loyal_to_the_republic }
+		available = { has_country_flag = plebiscite_event_read }
+		relative_position_id = IRE_loyal_to_the_republic
+		mutually_exclusive = {
+        	focus = IRE_a_new_path
+    	}	
+		x = -2
+		y = 1
+		cost = 5
+		#ai_will_do = {
+		#	factor = 1
+		#}
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			
+		}
+	}
+#
+	focus = {
+		id = IRE_the_1937_elections
+		icon = GFX_goal_generic_intelligence_exchange
+		#text = extra_tech_slot
+		prerequisite = { focus = IRE_stay_loyal_to_democracy }
+		available = { always = no }
+		relative_position_id = IRE_loyal_to_the_republic
+		x = -5
+		y = 2
+		cost = 0
+		#ai_will_do = {
+		#	factor = 1
+		#}
+		#bypass = {
+		#		OR = {
+		#			has_country_flag = elections_go_ahead
+		#			has_country_flag = elections_suspended
+		#		}
+		#}
+		bypass = {
+			has_country_flag = elections_go_ahead
+		}
+		available_if_capitulated = yes	
+	}
+#
+	focus = {
+		id = IRE_fianna_fail_win
+		icon = GFX_goal_generic_major_alliance
+		#text = extra_tech_slot
+		available = { always = no }
+		prerequisite = { focus = IRE_the_1937_elections }
+		relative_position_id = IRE_loyal_to_the_republic
+		x = -7
+		y = 3
+		cost = 5
+		#ai_will_do = {
+		#	factor = 1
+		#}
+		bypass = {
+			has_country_flag = fianna_fail_win
+		}
+		available_if_capitulated = yes	
+	}
+#
+	focus = {
+		id = IRE_fine_gael_win
+		icon = GFX_goal_generic_improve_relations
+		#text = extra_tech_slot
+		available = { always = no }
+		prerequisite = { focus = IRE_the_1937_elections }
+		relative_position_id = IRE_loyal_to_the_republic
+		x = -3
+		y = 3
+		cost = 5
+		#ai_will_do = {
+		#	factor = 1
+		#}
+		bypass = {
+			has_country_flag = fine_gael_win
+		}
+		available_if_capitulated = yes	
+	}
+#
+ 	focus = {
+		id = IRE_sinn_fein_win
+		icon = GFX_goal_generic_military_deal
+		#text = extra_tech_slot
+		available = { always = no }
+		prerequisite = { focus = IRE_the_1937_elections }
+		relative_position_id = IRE_loyal_to_the_republic
+		x = -5
+		y = 3
+		cost = 5
+		#ai_will_do = {
+		#	factor = 1
+		#}
+		bypass = {
+			has_country_flag = sinn_fein_win
+		}
+		available_if_capitulated = yes	
+	}
+#
+	focus = {
+		id = IRE_elections_suspended_1937
+		icon = GFX_goal_generic_military_deal
+		#text = extra_tech_slot
+		available = { always = no }
+		prerequisite = { focus = IRE_stay_loyal_to_democracy }
+		relative_position_id = IRE_loyal_to_the_republic
+		x = -11
+		y = 2
+		cost = 5
+		#ai_will_do = {
+		#	factor = 1
+		#}
+		bypass = {
+			has_country_flag = elections_suspended
+		}
+		available_if_capitulated = yes	
+	}
+#
+	focus = {
+		id = IRE_a_new_path
+		icon = GFX_focus_generic_strike_at_democracy2
+		#text = extra_tech_slot
+		prerequisite = { focus = IRE_loyal_to_the_republic }
+		relative_position_id = IRE_loyal_to_the_republic
+		available = { has_country_flag = plebiscite_event_read }
+		mutually_exclusive = {
+        	focus = IRE_stay_loyal_to_democracy
+    	}	
+		x = 2
+		y = 1
+		cost = 5
+		#ai_will_do = {
+		#	factor = 1
+		#}
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			
+		}
+	}
+#
+	focus = {
+		id = IRE_strengthen_communist_elements
+		icon = GFX_focus_generic_soviet_politics
+		#text = extra_tech_slot
+		prerequisite = { focus = IRE_a_new_path }
+		relative_position_id = IRE_a_new_path
+		mutually_exclusive = {
+        	focus = IRE_strengthen_the_state
+    	}	
+		x = 2
+		y = 2
+		cost = 5
+		#ai_will_do = {
+		#	factor = 1
+		#}
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_ideas = irish_communist_influence
+		}
+	}
+#
+	focus = {
+		id = IRE_strengthen_the_state
+		icon = GFX_focus_generic_strike_at_democracy1
+		#text = extra_tech_slot
+		prerequisite = { focus = IRE_a_new_path }
+		relative_position_id = IRE_a_new_path
+		mutually_exclusive = {
+        	focus = IRE_strengthen_communist_elements
+    	}	
+		x = -2
+		y = 2
+		cost = 5
+		#ai_will_do = {
+		#	factor = 1
+		#}
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_ideas = irish_fascist_influence
+		}
+	}
+#
+	focus = {
+		id = IRE_loyal_to_the_empire
+		icon = GFX_goal_generic_dangerous_deal
+		#text = extra_tech_slot
+		available = { always = no }
+		prerequisite = { focus = IRE_constitution_plebiscite }
+		x = 4
+		y = 1
+		relative_position_id = IRE_constitution_plebiscite
+		bypass = { has_country_flag = plebiscite_failed }
+		cost = 0
+		#ai_will_do = {
+		#	factor = 1
+		#}
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			country_event = { id = ireland.3 }
+		}
+	}
+

@@ -1,0 +1,286 @@
+﻿add_namespace = ireland
+
+# War with the UK
+country_event = {
+	id = ireland.1
+	title = ireland.1.t
+	desc = ireland.1.d
+	picture = GFX_news_event_chinese_soldiers_march
+	
+	is_triggered_only = no
+	fire_only_once = yes
+
+	trigger = {
+		tag = IRE
+		AND = {
+			date >1938.2.1
+		}
+	}
+
+	
+
+	option = { 
+		name = ireland.1.a
+		ai_chance = { factor = 100 }
+		declare_war_on = {
+		target = ENG
+		type = annex_everything
+		}
+	}
+}
+
+country_event = {# Start up Event
+	id = ireland.501
+	immediate = {log = "[GetDateText]: [Root.GetName]: event ireland.501"}
+	title = ireland.501.t
+	desc = ireland.501.d
+	picture = report_event_worker_protests
+
+	is_triggered_only = no
+	fire_only_once = yes
+
+	trigger = {
+		tag = IRE
+	}
+
+	mean_time_to_happen = {	days = 5 }
+
+	option = {
+		name = ireland.501.a
+		clr_country_flag = plebiscite_passed
+		clr_country_flag = plebiscite_failed
+		clr_country_flag = elections_go_ahead
+		clr_country_flag = elections_suspended
+		set_country_flag = lore_read
+	}
+}
+
+# The Plebiscite Itself
+country_event = {
+	id = ireland.4
+	title = ireland.4.t
+	desc = ireland.4.d
+	picture = GFX_report_event_election_vote
+	
+	is_triggered_only = no
+	fire_only_once = yes
+
+	trigger = {
+		tag = IRE
+		AND = {
+			has_completed_focus = IRE_constitution_plebiscite
+		}
+	}
+
+	option = { 
+		name = ireland.4.a
+		ai_chance = { factor = 52 }
+		add_political_power = 100
+		set_country_flag = plebiscite_passed
+
+	}
+
+	option = { 
+		name = ireland.4.b
+		ai_chance = { factor = 48 }
+		add_political_power = -50
+		set_country_flag = plebiscite_failed
+	}
+}
+
+# The Plebiscite Passes
+country_event = {
+	id = ireland.2
+	title = ireland.2.t
+	desc = ireland.2.d
+	picture = GFX_report_event_election_vote
+	
+	is_triggered_only = no
+	fire_only_once = yes
+
+	remove_ideas = {
+		dominion_in_name_only
+	}
+
+	trigger = {
+		tag = IRE
+		AND = {
+			has_country_flag = plebiscite_passed
+		}
+	}
+	
+	mean_time_to_happen = {	days = 5 }
+	
+
+	option = { 
+		name = ireland.2.a
+		ai_chance = { factor = 100 }
+		add_political_power = 100
+		set_cosmetic_tag = IRE_free
+		remove_ideas = dominion_in_name_only
+		leave_faction = yes
+		set_country_flag = plebiscite_event_read
+	}
+}
+
+# The Plebiscite fails
+country_event = {
+	id = ireland.3
+	title = ireland.3.t
+	desc = ireland.3.d
+	picture = GFX_report_event_election_vote
+	
+	is_triggered_only = no
+	fire_only_once = yes
+
+	trigger = {
+		tag = IRE
+		AND = {
+			has_country_flag = plebiscite_failed
+		}
+	}
+
+	mean_time_to_happen = {	days = 5 }
+
+	option = { 
+		name = ireland.3.a
+		ai_chance = { factor = 100 }
+		add_political_power = -50
+		
+	}
+}
+
+# The 1937 Election Prelude
+country_event = {
+	id = ireland.5
+	title = ireland.5.t
+	desc = ireland.5.d
+	picture = GFX_report_event_election_vote
+	
+	is_triggered_only = no
+	fire_only_once = yes
+
+	trigger = {
+		tag = IRE
+		AND = {
+			date > 1936.11.1
+			has_completed_focus = IRE_stay_loyal_to_democracy
+		}
+	}
+
+	mean_time_to_happen = {	days = 5 }
+
+	option = { 
+		name = ireland.5.a
+		ai_chance = { factor = 80 }	
+		set_country_flag = elections_go_ahead
+	}
+
+	option = { 
+		name = ireland.5.b
+		ai_chance = { factor = 20 }	
+		set_country_flag = elections_suspended
+	}
+}
+
+# The 1937 Elections
+country_event = {
+	id = ireland.6
+	title = ireland.6.t
+	desc = ireland.6.d
+	picture = GFX_report_event_election_vote
+	
+	is_triggered_only = no
+	fire_only_once = yes
+
+	trigger = {
+		tag = IRE
+		AND = {
+			has_completed_focus = IRE_the_1937_elections
+		}
+	}
+
+	mean_time_to_happen = {	days = 5 }
+
+	option = { 
+		name = ireland.6.a
+		ai_chance = { factor = 40 }	
+		set_country_flag = fianna_fail_win
+	}
+
+	option = { 
+		name = ireland.6.b
+		ai_chance = { factor = 50 }	
+		set_country_flag = fine_gael_win
+	}
+
+	option = { 
+		name = ireland.6.c
+		ai_chance = { factor = 10 }	
+		set_country_flag = sinn_fein_win
+	}
+}
+
+country_event = {
+	id = ireland.test
+	title = ireland.test.t
+	desc = ireland.test.d
+	picture = GFX_report_event_election_vote
+	
+	is_triggered_only = yes
+	#fire_only_once = yes
+
+	#trigger = {
+	#	
+	#}
+
+	option = { 
+		name = ireland.test.a
+		clr_country_flag = all #add all country flags here
+	}
+}
+# news events
+
+# Ireland votes for loyalty
+news_event = {
+	id = ireland.500
+	title = ireland.500.t
+	desc = ireland.500.d
+	picture = GFX_news_event_009
+	
+	mean_time_to_happen = {	days = 10 }
+
+	major = yes
+	fire_only_once = yes
+	is_triggered_only = no
+
+	trigger = {
+		has_country_flag = plebiscite_failed
+	}
+	
+	option = {
+		name = ireland.500.a
+	}
+}
+
+# Ireland votes for independence
+news_event = {
+	id = ireland.499
+	title = ireland.499.t
+	desc = ireland.499.d
+	picture = GFX_news_event_009
+	
+	mean_time_to_happen = {	days = 10 }
+	fire_only_once = yes
+	major = yes
+	
+	is_triggered_only = no
+	
+	trigger = {
+		has_country_flag = plebiscite_passed
+	}
+
+	option = {
+		name = ireland.499.a
+	}
+}
